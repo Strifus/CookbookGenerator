@@ -45,15 +45,6 @@ public class Recipe {
 		this.ingredients.clear();
 	}
 	
-//	/**
-//	 * Adds preparation step to recipe.
-//	 * 
-//	 * @param preparation Description of preparation step.
-//	 */
-//	public void addPreparation(String preparation) {
-//		this.preparation.add(preparation);
-//	}
-	
 	/**
 	 * Adds preparation step to recipe.
 	 * 
@@ -156,42 +147,5 @@ public class Recipe {
 		
 		return recipe;
 	}
-	
-//	public static void writeJson(Recipe recipe, String fileName) {
-//		try {
-//		    // Create Gson instance
-//	        Gson gson = new GsonBuilder().setPrettyPrinting().create(); 
-//	
-//		    // Create a writer
-//		    Writer writer = Files.newBufferedWriter(Paths.get(fileName));
-//	
-//		    // Convert recipe object to JSON file
-//		    gson.toJson(recipe, writer);
-//	
-//		    // Close writer
-//		    writer.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
-//	
-//	public static void readJson(Recipe recipe, String fileName) {
-//		try {     
-//	        // Create Gson instance
-//	        Gson gson = new Gson();
-//	
-//		    // Create a reader
-//		    Reader reader = Files.newBufferedReader(Paths.get(fileName));
-//	
-//		    // convert JSON string to Book object
-//		    recipe = gson.fromJson(reader, Recipe.class);
-//	
-//		    // Close writer
-//		    reader.close();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
 
 }

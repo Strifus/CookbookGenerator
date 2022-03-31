@@ -20,6 +20,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
@@ -65,7 +66,6 @@ public class CookbookGenerator extends JPanel {
 	private JLabel lIngredientsHeader;
 	private JLabel lIngredients;
 	private JLabel lPrepSteps;
-//	private JTextArea taPrepSteps;
 	
     public CookbookGenerator() {
         super(new GridLayout(1, 1));
@@ -318,10 +318,6 @@ public class CookbookGenerator extends JPanel {
         lPrepStepsHeader.setFont(new Font("", Font.BOLD, 12));
         lPrepSteps = new JLabel();
         
-//        taPrepSteps = new JTextArea();
-//        taPrepSteps.setEditable(false);
-//        taPrepSteps.setBackground(getBackground());
-        
         // Update element content
         this.updateRecipe();
         
@@ -335,7 +331,6 @@ public class CookbookGenerator extends JPanel {
         panel.add(lIngredients);
         panel.add(lPrepStepsHeader);
         panel.add(lPrepSteps);
-//        panel.add(taPrepSteps);
         
         return panel;
     }
@@ -442,16 +437,16 @@ public class CookbookGenerator extends JPanel {
     	this.updateUI();
     }
     
-    private void clearRecipe() {
-    	recipe.setName("");
-    	recipe.setCategory("");
-    	recipe.size.setValue("");
-    	recipe.size.setUnit("");
-    	recipe.time.setValue("");
-    	recipe.time.setUnit("");
-    	recipe.clearIngredient();
-    	recipe.clearPreparation();
-    }
+//    private void clearRecipe() {
+//    	recipe.setName("");
+//    	recipe.setCategory("");
+//    	recipe.size.setValue("");
+//    	recipe.size.setUnit("");
+//    	recipe.time.setValue("");
+//    	recipe.time.setUnit("");
+//    	recipe.clearIngredient();
+//    	recipe.clearPreparation();
+//    }
     
     /**
      * Creates new recipe object from specified JSON file and updates text fields.
@@ -502,7 +497,6 @@ public class CookbookGenerator extends JPanel {
     	// Update output tab with date from recipe object
     	lTitle.setText(recipe.getName());
     	lCategory.setText(recipe.getCategory());
-//    	lTime.setText("  " + recipe.time.getValue() + " " + recipe.time.getUnit());
     	lTime.setText("<html><table><tr><td align=Right>" + recipe.time.getValue() + "</td><td align=Left>" + recipe.time.getUnit() + "</td></tr></table></html>");
     	lIngredientsHeader.setText("Ingredients for " + recipe.size.getValue() + " " + recipe.size.getUnit());
     	lIngredients.setText("Zutatenliste...");
@@ -520,12 +514,6 @@ public class CookbookGenerator extends JPanel {
     	}
     	prepSteps = "<html>" + prepSteps + "</html>";
     	lPrepSteps.setText(prepSteps);
-    	
-//    	prepSteps = "";
-//    	for (String curStep : recipe.preparationList) {
-//    		prepSteps = prepSteps + curStep + "\n";
-//    	}
-//    	taPrepSteps.setText(prepSteps);
     	
     	// Refresh GUI
     	this.revalidate();
@@ -594,7 +582,7 @@ public class CookbookGenerator extends JPanel {
         frame.setJMenuBar(cookBook.createMenuBar());
         
         // Add content to the window.
-        frame.add(cookBook, BorderLayout.CENTER);
+        frame.add(new JScrollPane(cookBook), BorderLayout.CENTER);
         
         // Display the window.
         frame.pack();
